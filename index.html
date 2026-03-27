@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaaSSwap | Find the Best Modern Alternatives to Popular SaaS Tools</title>
+    <meta name="description" content="SaaSSwap is the ultimate directory for finding open-source and privacy-focused alternatives to Notion, Slack, Zoom, Figma, and more. Compare features, pricing, and advantages.">
+    <meta name="keywords" content="SaaS alternatives, open source software, Notion alternative, Slack alternative, privacy tools, software comparison">
+    <link rel="canonical" href="https://saasswap.com/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://saasswap.com/">
+    <meta property="og:title" content="SaaSSwap | Find the Best Modern Alternatives to Popular SaaS Tools">
+    <meta property="og:description" content="Discover open-source, privacy-first, and better-valued alternatives to your favorite SaaS tools.">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="SaaSSwap | SaaS Alternatives Directory">
+    <meta property="twitter:description" content="Discover open-source, privacy-first, and better-valued alternatives to your favorite SaaS tools.">
+
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-teal: #2dd4bf;
+            --accent-blue: #0ea5e9;
+            --border-color: #334155;
+            --tag-free: #10b981;
+            --tag-paid: #f59e0b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(14, 165, 233, 0.1) 0%, rgba(15, 23, 42, 0) 100%);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--accent-teal), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Controls Area */
+        .controls {
+            margin-bottom: 4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .search-box {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 1.2rem 1.5rem 1.2rem 3.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            color: white;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--accent-teal);
+            box-shadow: 0 0 0 4px rgba(45, 212, 191, 0.1);
+        }
+
+        .search-box svg {
+            position: absolute;
+            left: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+        }
+
+        .filters {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 0.6rem 1.2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 99px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--accent-teal);
+            color: var(--bg-dark);
+            border-color: var(--accent-teal);
+        }
+
+        /* Main Section Styling */
+        .tool-section {
+            margin-bottom: 6rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+        }
+
+        .section-header .original-tag {
+            background: rgba(14, 165, 233, 0.1);
+            color: var(--accent-blue);
+            padding: 0.2rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .alternatives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-teal);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .status-badge {
+            font-size: 0.75rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        .status-free { background: rgba(16, 185, 129, 0.1); color: var(--tag-free); }
+        .status-paid { background: rgba(245, 158, 11, 0.1); color: var(--tag-paid); }
+
+        .card-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .advantage {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            border-left: 3px solid var(--accent-teal);
+            margin-bottom: 1.5rem;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .visit-btn {
+            color: var(--accent-teal);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .visit-btn:hover {
+            text-decoration: underline;
+        }
+
+        /* AdSense Placeholders */
+        .ad-unit {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px dashed var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            margin: 3rem 0;
+            min-height: 250px;
+            width: 100%;
+            border-radius: 12px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 6rem 0 4rem;
+            background: #0b1120;
+            margin-top: 4rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .disclosure {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .alternatives-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1>SaaSSwap</h1>
+        <p class="subtitle">Discover privacy-first, open-source, and high-value alternatives to your everyday SaaS tools. Built for developers and modern teams.</p>
+        
+        <div class="controls">
+            <div class="search-box">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                <input type="text" id="searchInput" placeholder="Search for tools or alternatives (e.g. Notion, Figma)...">
+            </div>
+            <div class="filters">
+                <button class="filter-btn active" data-category="all">All Tools</button>
+                <button class="filter-btn" data-category="Productivity">Productivity</button>
+                <button class="filter-btn" data-category="Communication">Communication</button>
+                <button class="filter-btn" data-category="Design">Design & Creative</button>
+                <button class="filter-btn" data-category="Development">Development</button>
+                <button class="filter-btn" data-category="Marketing">Marketing & Business</button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    
+    <!-- AdSense Placeholder 1 -->
+    <div class="ad-unit">
+        <span>[ AdSense Responsive Ad Unit ]</span>
+    </div>
+
+    <div id="toolsContainer">
+        <!-- Content will be injected here by JS for better management of 15+ sections -->
+    </div>
+
+    <!-- AdSense Placeholder 2 -->
+    <div class="ad-unit">
+        <span>[ AdSense Display Ad ]</span>
+    </div>
+
+</main>
+
+<footer>
+    <div class="container footer-content">
+        <h2>SaaSSwap</h2>
+        <p class="disclosure">
+            <strong>Affiliate Disclosure:</strong> Some of the links on this website are affiliate links, which means that we may earn a small commission if you click on the link or make a purchase using the link. This comes at no additional cost to you and helps us keep this resource updated and free to use. We only recommend tools we believe are genuinely useful alternatives.
+        </p>
+        <div class="copyright">
+            &copy; 2026 SaaSSwap. All rights reserved. Built for the open web.
+        </div>
+    </div>
+</footer>
+
+<script>
+    const toolsData = [
+        {
+            category: "Productivity",
+            original: "Notion",
+            alternatives: [
+                { name: "Obsidian", desc: "A powerful knowledge base that works on top of a local folder of plain text Markdown files.", status: "Free", url: "https://obsidian.md", adv: "Total control over your data with local storage and powerful plugins." },
+                { name: "Coda", desc: "The all-in-one doc that brings words, data, and teams together.", status: "Paid", url: "https://coda.io", adv: "Unmatched formula power and interactive building blocks for apps." },
+                { name: "Anytype", desc: "An encrypted, local-first alternative that focuses on data sovereignty.", status: "Open Source", url: "https://anytype.io", adv: "Peer-to-peer sync and end-to-end encryption by default." },
+                { name: "Logseq", desc: "A privacy-first, open-source knowledge management and collaboration tool.", status: "Open Source", url: "https://logseq.com", adv: "Strong focus on networked thought and backlinking." }
+            ]
+        },
+        {
+            category: "Communication",
+            original: "Slack",
+            alternatives: [
+                { name: "Discord", desc: "High-performance voice, video, and text chat designed for communities.", status: "Free", url: "https://discord.com", adv: "Superior voice channels and community management features." },
+                { name: "Mattermost", desc: "Open-source, self-hosted collaboration platform for developer teams.", status: "Open Source", url: "https://mattermost.com", adv: "Full control over your data residency and security compliance." },
+                { name: "Rocket.Chat", desc: "The open-source communications platform that puts data protection first.", status: "Open Source", url: "https://rocket.chat", adv: "Omnichannel support to talk to customers on any platform." }
+            ]
+        },
+        {
+            category: "Communication",
+            original: "Zoom",
+            alternatives: [
+                { name: "Jitsi Meet", desc: "Fully encrypted, 100% open source video conferencing solution.", status: "Open Source", url: "https://meet.jit.si", adv: "No account required; just create a link and start talking." },
+                { name: "Whereby", desc: "The easiest way to meet over video. No app or software download required.", status: "Free", url: "https://whereby.com", adv: "Beautiful UI and seamless browser-based experience." },
+                { name: "Around", desc: "Video calls designed for hybrid teams. High-impact, low-fatigue.", status: "Paid", url: "https://around.co", adv: "Circular avatars and smart noise cancellation for deep work." }
+            ]
+        },
+        {
+            category: "Design",
+            original: "Figma",
+            alternatives: [
+                { name: "Penpot", desc: "The first open-source design and prototyping platform for teams.", status: "Open Source", url: "https://penpot.app", adv: "Built on SVG and CSS standards, bridging the gap between designers and devs." },
+                { name: "Lunacy", desc: "Graphic design software with built-in assets and AI tools.", status: "Free", url: "https://icons8.com/lunacy", adv: "Native app for Windows, Mac, and Linux with full .fig support." },
+                { name: "Framer", desc: "Design and publish professional sites with the speed of a design tool.", status: "Paid", url: "https://framer.com", adv: "Direct design-to-production pipeline for high-end websites." }
+            ]
+        },
+        {
+            category: "Productivity",
+            original: "Airtable",
+            alternatives: [
+                { name: "NocoDB", desc: "The Open Source No-Code platform that turns any database into a smart spreadsheet.", status: "Open Source", url: "https://nocodb.com", adv: "Self-host on your own infrastructure to keep 100% data control." },
+                { name: "Baserow", desc: "Open-source online database that gives you the powers of a developer without coding.", status: "Open Source", url: "https://baserow.io", adv: "Extremely modular and developer-friendly API." },
+                { name: "SeaTable", desc: "The flexible information management system that combines spreadsheets and databases.", status: "Free", url: "https://seatable.io", adv: "Excellent support for big data and complex automation." }
+            ]
+        },
+        {
+            category: "Productivity",
+            original: "Trello",
+            alternatives: [
+                { name: "Kanboard", desc: "Simple and minimalist Kanban board software.", status: "Open Source", url: "https://kanboard.org", adv: "No clutter, extremely fast, and focus-oriented." },
+                { name: "Planka", desc: "Elegant open-source Trello-like board for project management.", status: "Open Source", url: "https://planka.app", adv: "Modern React-based UI that feels familiar and snappy." },
+                { name: "Taiga", desc: "The project management tool for multi-functional agile teams.", status: "Open Source", url: "https://taiga.io", adv: "Comprehensive support for Kanban, Scrum, and Epics." }
+            ]
+        },
+        {
+            category: "Marketing",
+            original: "Google Analytics",
+            alternatives: [
+                { name: "Plausible", desc: "Lightweight and open-source website analytics. No cookies and fully compliant with GDPR.", status: "Open Source", url: "https://plausible.io", adv: "Under 1KB script that doesn't slow down your site." },
+                { name: "Umami", desc: "A simple, fast, privacy-focused alternative to Google Analytics.", status: "Open Source", url: "https://umami.is", adv: "Easy to self-host and provides a clean, single-page dashboard." },
+                { name: "Fathom", desc: "Privacy-first analytics that pioneered the cookie-less tracking movement.", status: "Paid", url: "https://usefathom.com", adv: "Focus on business value without invading user privacy." }
+            ]
+        },
+        {
+            category: "Marketing",
+            original: "Mailchimp",
+            alternatives: [
+                { name: "ConvertKit", desc: "Email marketing platform built by creators, for creators.", status: "Free", url: "https://convertkit.com", adv: "Powerful visual automation builders designed for simplicity." },
+                { name: "Buttondown", desc: "The easiest way to start and grow a newsletter.", status: "Free", url: "https://buttondown.email", adv: "Clean, minimalist interface with great Markdown support." },
+                { name: "Loops", desc: "A modern email platform for SaaS companies.", status: "Paid", url: "https://loops.so", adv: "Beautifully designed templates specifically for product updates." }
+            ]
+        },
+        {
+            category: "Marketing",
+            original: "Shopify",
+            alternatives: [
+                { name: "WooCommerce", desc: "The most customizable eCommerce platform for building exactly what you want.", status: "Open Source", url: "https://woocommerce.com", adv: "Infinite flexibility within the WordPress ecosystem." },
+                { name: "Medusa", desc: "The open-source Shopify alternative for developers.", status: "Open Source", url: "https://medusajs.com", adv: "Headless commerce architecture for complete frontend freedom." },
+                { name: "Saleor", desc: "A headless, GraphQL-first eCommerce platform.", status: "Open Source", url: "https://saleor.io", adv: "Built for high-performance and complex global stores." }
+            ]
+        },
+        {
+            category: "Development",
+            original: "Vercel",
+            alternatives: [
+                { name: "Netlify", desc: "The platform for modern web development. Deploy in seconds.", status: "Free", url: "https://netlify.com", adv: "Excellent form handling and edge function integration." },
+                { name: "Railway", desc: "A deployment platform where you can provision infrastructure in minutes.", status: "Free", url: "https://railway.app", adv: "Deploy databases and backends with zero configuration." },
+                { name: "Coolify", desc: "An open-source & self-hostable Heroku/Vercel alternative.", status: "Open Source", url: "https://coolify.io", adv: "Total control over your own server with a beautiful UI." }
+            ]
+        },
+        {
+            category: "Development",
+            original: "GitHub Copilot",
+            alternatives: [
+                { name: "Cursor", desc: "The AI-native code editor built for pair programming with AI.", status: "Free", url: "https://cursor.sh", adv: "Deep integration with your codebase for more accurate suggestions." },
+                { name: "Codeium", desc: "Free AI code completion and chat for over 70+ languages.", status: "Free", url: "https://codeium.com", adv: "Generous free tier for individuals with high-speed inference." },
+                { name: "Tabnine", desc: "AI assistant for developers that keeps your code private.", status: "Paid", url: "https://tabnine.com", adv: "Local model execution for enterprise-grade security." }
+            ]
+        },
+        {
+            category: "Development",
+            original: "ChatGPT",
+            alternatives: [
+                { name: "Claude", desc: "Next-generation AI assistant by Anthropic with a focus on safety.", status: "Free", url: "https://claude.ai", adv: "Excellent nuance in writing and huge context window." },
+                { name: "Perplexity", desc: "AI-powered search engine that provides cited answers.", status: "Free", url: "https://perplexity.ai", adv: "Real-time web access with verifiable sources for every claim." },
+                { name: "Mistral Chat", desc: "Access the powerful open-weight models from Europe's leading AI lab.", status: "Free", url: "https://chat.mistral.ai", adv: "Lean, efficient models with high reasoning capabilities." }
+            ]
+        },
+        {
+            category: "Design",
+            original: "Canva",
+            alternatives: [
+                { name: "Photopea", desc: "Advanced web-based photo editor that works like Photoshop.", status: "Free", url: "https://photopea.com", adv: "No installation needed, supports PSD, AI, and Sketch files." },
+                { name: "Polotno", desc: "A canvas-like editor built for developers to embed.", status: "Free", url: "https://studio.polotno.com", adv: "Super simple, fast, and no account required for quick designs." },
+                { name: "Pixlr", desc: "Online photo editor with AI-powered design tools.", status: "Free", url: "https://pixlr.com", adv: "Good balance between ease of use and advanced layering." }
+            ]
+        },
+        {
+            category: "Development",
+            original: "1Password",
+            alternatives: [
+                { name: "Bitwarden", desc: "Open-source password manager for individuals and businesses.", status: "Open Source", url: "https://bitwarden.com", adv: "Fully open-source and audited security model." },
+                { name: "KeePassXC", desc: "Community-driven port of the classic KeePass password manager.", status: "Open Source", url: "https://keepassxc.org", adv: "Offline-first, no cloud dependency, full database control." },
+                { name: "Proton Pass", desc: "End-to-end encrypted password manager from the makers of Proton Mail.", status: "Free", url: "https://proton.me/pass", adv: "Integrated email aliases to protect your identity." }
+            ]
+        },
+        {
+            category: "Productivity",
+            original: "Calendly",
+            alternatives: [
+                { name: "Cal.com", desc: "The open-source scheduling infrastructure for everyone.", status: "Open Source", url: "https://cal.com", adv: "Self-hostable and highly extensible via an open API." },
+                { name: "TidyCal", desc: "The simple, affordable scheduling solution from AppSumo.", status: "Paid", url: "https://tidycal.com", adv: "One-time payment for lifetime access (no subscriptions)." },
+                { name: "SavvyCal", desc: "The scheduling tool that people actually love to use.", status: "Paid", url: "https://savvycal.com", adv: "Interactive interface that lets recipients overlay their own calendars." }
+            ]
+        }
+    ];
+
+    const container = document.getElementById('toolsContainer');
+    const searchInput = document.getElementById('searchInput');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+
+    function renderTools(searchTerm = '', categoryFilter = 'all') {
+        container.innerHTML = '';
+        
+        const filteredData = toolsData.filter(section => {
+            const matchesCategory = categoryFilter === 'all' || section.category === categoryFilter;
+            
+            if (!matchesCategory) return false;
+
+            if (!searchTerm) return true;
+
+            const lowerSearch = searchTerm.toLowerCase();
+            const originalMatch = section.original.toLowerCase().includes(lowerSearch);
+            const altMatch = section.alternatives.some(alt => 
+                alt.name.toLowerCase().includes(lowerSearch) || 
+                alt.desc.toLowerCase().includes(lowerSearch)
+            );
+
+            return originalMatch || altMatch;
+        });
+
+        if (filteredData.length === 0) {
+            container.innerHTML = `<div style="text-align:center; padding: 4rem; color: var(--text-secondary);">
+                <h3>No tools found matching your search.</h3>
+                <p>Try searching for categories like "Design" or brands like "Notion".</p>
+            </div>`;
+            return;
+        }
+
+        filteredData.forEach((section, index) => {
+            const sectionDiv = document.createElement('section');
+            sectionDiv.className = 'tool-section';
+            
+            sectionDiv.innerHTML = `
+                <div class="section-header">
+                    <h2>${section.original}</h2>
+                    <span class="original-tag">The Standard</span>
+                </div>
+                <div class="alternatives-grid">
+                    ${section.alternatives.map(alt => `
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">${alt.name}</h3>
+                                <span class="status-badge ${alt.status === 'Paid' ? 'status-paid' : 'status-free'}">${alt.status}</span>
+                            </div>
+                            <p class="card-description">${alt.desc}</p>
+                            <div class="advantage">
+                                <strong>Why switch?</strong> ${alt.adv}
+                            </div>
+                            <div class="card-footer">
+                                <a href="${alt.url}" class="visit-btn" target="_blank" rel="noopener noreferrer">
+                                    Visit Website
+                                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                                </a>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            container.appendChild(sectionDiv);
+
+            // Insert 3rd AdSense after the 6th section
+            if (index === 5) {
+                const midAd = document.createElement('div');
+                midAd.className = 'ad-unit';
+                midAd.innerHTML = '<span>[ AdSense In-Feed Ad ]</span>';
+                container.appendChild(midAd);
+            }
+        });
+    }
+
+    // Event Listeners
+    searchInput.addEventListener('input', (e) => {
+        const activeFilter = document.querySelector('.filter-btn.active').dataset.category;
+        renderTools(e.target.value, activeFilter);
+    });
+
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderTools(searchInput.value, btn.dataset.category);
+        });
+    });
+
+    // Initial Render
+    renderTools();
+</script>
+
+</body>
+</html>
